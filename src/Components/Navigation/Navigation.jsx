@@ -17,7 +17,7 @@ export default function Navigation() {
 
         <div className="flex gap-1 w-full">
           <input
-            className="w-full focus:outline-none rounded-full py-2 px-5"
+            className="w-full focus:outline-none focus:ring rounded-full py-2 px-5"
             placeholder="Search products..."
           />
           <button className="bg-blue-500 text-white rounded-full p-px hover:bg-blue-400 focus:outline-none w-12 h-12 flex items-center justify-center">
