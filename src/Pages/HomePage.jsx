@@ -10,7 +10,7 @@ import shirt1 from "../Images/shirt1.jpg";
 export const Home = () => {
   return (
     <>
-      <div className="flex items-center justify-start relative">
+      <div className="flex items-center justify-start relative overflow-hidden">
         <img className="filter brightness-40 opacity-20 " src={landing} alt="" />
 
         <div className="p-20 text-7xl font-bold w-full absolute">

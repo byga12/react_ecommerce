@@ -3,10 +3,11 @@ import { Footer } from "./Components/Navigation/Footer";
 
 // COMPONENTS
 import Navigation from "./Components/Navigation/Navigation";
-import { Home } from "./Pages/Home";
 //PAGES
-import SignIn from "./Pages/SignIn";
-import SignUp from "./Pages/SignUp";
+import { Home } from "./Pages/HomePage";
+import SignIn from "./Pages/SignInPage";
+import SignUp from "./Pages/SignUpPage";
+import { Explore } from "./Pages/ExplorePage";
 function App() {
   return (
     <BrowserRouter>
@@ -14,6 +15,7 @@ function App() {
       <Route path="/" exact component={Home}></Route>
       <Route path="/signin" exact component={SignIn}></Route>
       <Route path="/signup" exact component={SignUp}></Route>
+      <Route path="/explore" exact component={Explore}></Route>
       <Footer />
     </BrowserRouter>
   );
