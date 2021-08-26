@@ -1,5 +1,5 @@
 import React from "react";
-
+import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import firebase from "../Config/firebase";
 // COMPONENTS
@@ -9,17 +9,19 @@ export default function Signup() {
   const {
     register,
     handleSubmit,
-    watch,
+    // watch,
     formState: { errors },
   } = useForm();
 
+  let history = useHistory();
   const onSubmit = async (data) => {
     // Firebase auth
     try {
       console.log(12334);
-      const document = await firebase.auth.createUserWithEmailAndPassword(data.email, data.password);
+      await firebase.auth.createUserWithEmailAndPassword(data.email, data.password);
       // await firebase.firestore.collection("usuarios").add({ name: data.name, id: document.user.uid });
       alert("Successfully registered");
+      history.push("/signin");
     } catch (e) {
       alert(e);
     }
@@ -60,7 +62,7 @@ export default function Signup() {
             }),
           }}
           label="Password"
-          placeholder="Type password..."
+          placeholder="Type a password..."
           type="password"
           errors={errors}
         />

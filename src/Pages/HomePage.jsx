@@ -5,7 +5,6 @@ import { Product } from "../Components/Product";
 
 // IMAGES
 import landing from "../Images/landing.jpg";
-import shirt1 from "../Images/shirt1.jpg";
 
 export const Home = () => {
   return (
@@ -13,7 +12,7 @@ export const Home = () => {
       <div className="flex items-center justify-start relative overflow-hidden">
         <img className="filter brightness-40 opacity-20 " src={landing} alt="" />
 
-        <div className="p-20 text-7xl font-bold w-full absolute">
+        <div className="p-6 text-xl sm:p-20 sm:text-4xl md:text-6xl lg:text-7xl font-bold w-full absolute">
           <ul>
             <li>buy, sell and gift at reasonable prices.</li>
 
