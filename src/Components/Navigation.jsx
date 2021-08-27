@@ -8,7 +8,7 @@ export default function Navigation() {
         <nav className="flex gap-3 p-4 bg-gray-100 justify-around items-center">
           <div>
             <Link to="/">
-              <span className="text-white text-xl bg-black max-w-xs px-3 py-1 rounded-md">Shop</span>
+              <span className="text-white text-xl bg-black max-w-xs px-3 py-1 rounded-md">Element</span>
             </Link>
           </div>
 
@@ -28,12 +28,21 @@ export default function Navigation() {
           )}
 
           {context.userLogin && (
-            <button
-              className="border border-black rounded-2xl py-0.5 px-3 hover:opacity-60 whitespace-pre"
-              onClick={context.logoutUser}
-            >
-              Sign out
-            </button>
+            <div className="flex items-center gap-6">
+              <button
+                className="border border-black rounded-2xl py-0.5 px-3 hover:opacity-60 whitespace-pre"
+                onClick={context.logoutUser}
+              >
+                Sign out
+              </button>
+
+              <div>
+                <button className="whitespace-pre">
+                  <i className="fas fa-user"></i>
+                  <i className="fas fa-caret-down ml-1"></i>
+                </button>
+              </div>
+            </div>
           )}
         </nav>
       )}

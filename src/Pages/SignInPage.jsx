@@ -14,7 +14,6 @@ export default function Signin() {
 
   let history = useHistory();
   const onSubmit = async (data) => {
-    console.log(data);
     //Firebase login
     try {
       await firebase.auth.signInWithEmailAndPassword(data.email, data.password);

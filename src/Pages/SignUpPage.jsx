@@ -17,7 +17,6 @@ export default function Signup() {
   const onSubmit = async (data) => {
     // Firebase auth
     try {
-      console.log(12334);
       await firebase.auth.createUserWithEmailAndPassword(data.email, data.password);
       // await firebase.firestore.collection("usuarios").add({ name: data.name, id: document.user.uid });
       alert("Successfully registered");

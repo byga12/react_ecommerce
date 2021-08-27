@@ -8,6 +8,7 @@ import { Home } from "./Pages/HomePage";
 import SignIn from "./Pages/SignInPage";
 import SignUp from "./Pages/SignUpPage";
 import { Explore } from "./Pages/ExplorePage";
+
 function App() {
   return (
     <GlobalState>
