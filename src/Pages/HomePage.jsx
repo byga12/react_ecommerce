@@ -12,7 +12,10 @@ export const Home = () => {
     (async () => {
       const querySnapshot = await firebase.firestore.collection("products").get();
       const products = await querySnapshot.docs.map((product) => product.data());
-      setProductList(products);
+      const productsWithDiscount = products.filter(
+        (product) => product.discount,
+      );
+      setProductList(productsWithDiscount);
     })();
   }, []);
   return (

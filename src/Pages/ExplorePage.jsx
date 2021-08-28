@@ -31,6 +31,7 @@ export const Explore = () => {
               price={product.price}
               discount={product.discount}
               tags={product.tags}
+
             />
           ))}
         </div>
