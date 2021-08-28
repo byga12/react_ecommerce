@@ -10,10 +10,14 @@ export const Home = () => {
   const [productList, setProductList] = useState([]);
   useEffect(() => {
     (async () => {
-      const querySnapshot = await firebase.firestore.collection("products").get();
-      const products = await querySnapshot.docs.map((product) => product.data());
+      const querySnapshot = await firebase.firestore
+        .collection("products")
+        .get();
+      const products = await querySnapshot.docs.map((product) =>
+        product.data()
+      );
       const productsWithDiscount = products.filter(
-        (product) => product.discount,
+        (product) => product.discount
       );
       setProductList(productsWithDiscount);
     })();
@@ -21,7 +25,11 @@ export const Home = () => {
   return (
     <>
       <div className="flex items-center justify-start relative overflow-hidden">
-        <img className="filter brightness-40 opacity-20 " src={landing} alt="" />
+        <img
+          className="filter brightness-40 opacity-20 "
+          src={landing}
+          alt=""
+        />
 
         <div className="p-6 text-xl sm:p-20 sm:text-4xl md:text-6xl lg:text-7xl font-bold w-full absolute">
           <ul>
@@ -38,13 +46,15 @@ export const Home = () => {
         <h2 className="text-xl text-center mb-16">ON SALE</h2>
 
         <div className="flex flex-wrap justify-center gap-3">
-          {productList.map((product) => (
+          {productList.map((product, index) => (
             <Product
+              key={product.id}
               name={product.name}
               imageURL={product.imageURL}
               price={product.price}
               discount={product.discount}
               tags={product.tags}
+              id={product.id}
             />
           ))}
         </div>

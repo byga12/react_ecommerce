@@ -8,8 +8,22 @@ import { Home } from "./Pages/HomePage";
 import SignIn from "./Pages/SignInPage";
 import SignUp from "./Pages/SignUpPage";
 import { Explore } from "./Pages/ExplorePage";
+import { Cart } from "./Pages/CartPage";
 
+//ESTO QUE ESTÁ COMENTADO ES PARA SUBIR ARRAY DE PRODUCTOS A FIREBASE
+// import firebase from "./Config/firebase";
+// import array from "./subirproductos";
+// import { useEffect } from "react";
 function App() {
+  // useEffect(() => {
+  //   array.map(
+  //     async (product) =>
+  //       await firebase.firestore
+  //         .collection("products")
+  //         .add(JSON.parse(JSON.stringify(product)))
+  //   );
+  // }, []);
+
   return (
     <GlobalState>
       <BrowserRouter>
@@ -18,6 +32,7 @@ function App() {
         <Route path="/signin" exact component={SignIn}></Route>
         <Route path="/signup" exact component={SignUp}></Route>
         <Route path="/explore" exact component={Explore}></Route>
+        <Route path="/cart" exact component={Cart}></Route>
         <Footer />
       </BrowserRouter>
     </GlobalState>

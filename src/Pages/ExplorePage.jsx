@@ -7,8 +7,12 @@ export const Explore = () => {
 
   useEffect(() => {
     (async () => {
-      const querySnapshot = await firebase.firestore.collection("products").get();
-      const products = await querySnapshot.docs.map((product) => product.data());
+      const querySnapshot = await firebase.firestore
+        .collection("products")
+        .get();
+      const products = await querySnapshot.docs.map((product) =>
+        product.data()
+      );
       setProductList(products);
     })();
   }, []);
@@ -17,7 +21,9 @@ export const Explore = () => {
     <>
       <div className="p-7 py-20 bg-black text-white sm:p-20">
         <h2 className="mb-6 text-5xl text-center">Explore</h2>
-        <h3 className="text-center text-2xl">+5.000 handmade products from people around the globe.</h3>
+        <h3 className="text-center text-2xl">
+          +5.000 handmade products from people around the globe.
+        </h3>
       </div>
 
       <ExplorerNavigation />
@@ -26,12 +32,13 @@ export const Explore = () => {
         <div className="flex flex-wrap gap-8 justify-center">
           {productList.map((product) => (
             <Product
+              key={product.id}
               name={product.name}
               imageURL={product.imageURL}
               price={product.price}
               discount={product.discount}
               tags={product.tags}
-
+              id={product.id}
             />
           ))}
         </div>
