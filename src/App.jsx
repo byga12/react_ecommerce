@@ -10,7 +10,7 @@ import SignUp from "./Pages/SignUpPage";
 import { Explore } from "./Pages/ExplorePage";
 import { Cart } from "./Pages/CartPage";
 
-//ESTO QUE ESTÁ COMENTADO ES PARA SUBIR ARRAY DE PRODUCTOS A FIREBASE
+// ESTO QUE ESTÁ COMENTADO ES PARA SUBIR ARRAY DE PRODUCTOS A FIREBASE
 // import firebase from "./Config/firebase";
 // import array from "./subirproductos";
 // import { useEffect } from "react";

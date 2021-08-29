@@ -18,22 +18,22 @@ const nombreRandom = () => {
 
   switch (numero) {
     case 1:
-      nombre = "Musculosa";
+      nombre = "Green sweater L/XL";
       break;
     case 2:
-      nombre = "Chomba";
+      nombre = "Short dress S/M/L";
       break;
     case 3:
-      nombre = "Camisa";
+      nombre = "Black t-shirt S/M";
       break;
     case 4:
-      nombre = "Remera manga larga";
+      nombre = "Running black & white trainers";
       break;
     case 5:
-      nombre = "Remera manga corta";
+      nombre = "Short";
       break;
     case 6:
-      nombre = "Campera con capucha";
+      nombre = "White hoodie XS/S/M/L/XL";
       break;
     default:
       break;
@@ -60,10 +60,10 @@ const filtroRandom = () => {
       filtro = "Free shipping";
       break;
     case 5:
-      filtro = "Edición verano 2020";
+      filtro = "Summer 2020 edition";
       break;
     case 6:
-      filtro = "Edición invierno";
+      filtro = "Winter edition";
       break;
     default:
       break;

@@ -1,10 +1,27 @@
 import React, { useState, useEffect } from "react";
 import firebase from "../Config/firebase";
-import { ExplorerNavigation } from "../Components/Navigation/ExplorerNavigation/ExplorerNavigation";
+import { ExplorerNavigation } from "../Components/ExplorerNavigation";
 import { Product } from "../Components/Product";
 export const Explore = () => {
   const [productList, setProductList] = useState([]);
-
+  const [fixedProductList, setfixedProductList] = useState([]);
+  const getActiveOptions = (activeOptions) => {
+    // console.log(activeOptions);
+    if (!activeOptions.length) {
+      setProductList(fixedProductList);
+      return;
+    }
+    const newProductList = fixedProductList.filter((product) => {
+      let res = false;
+      product.tags.forEach((tag) => {
+        if (activeOptions.includes(tag)) {
+          res = true;
+        }
+      });
+      return res;
+    });
+    setProductList(newProductList);
+  };
   useEffect(() => {
     (async () => {
       const querySnapshot = await firebase.firestore
@@ -14,6 +31,7 @@ export const Explore = () => {
         product.data()
       );
       setProductList(products);
+      setfixedProductList(products);
     })();
   }, []);
 
@@ -26,7 +44,7 @@ export const Explore = () => {
         </h3>
       </div>
 
-      <ExplorerNavigation />
+      <ExplorerNavigation getActiveOptions={getActiveOptions} />
 
       <div className="p-7 pt-16 lg:p-10 lg:pt-16 m-auto w-4/5">
         <div className="flex flex-wrap gap-8 justify-center">
