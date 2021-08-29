@@ -26,7 +26,11 @@ export default function Signin() {
   };
   return (
     <div className="flex items-center justify-center">
-      <form onSubmit={handleSubmit(onSubmit)} action="" className="rounded border w-4/5 sm:w-3/5 lg:w-1/3 p-6 my-16 shadow-2xl">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        action=""
+        className="rounded border w-4/5 sm:w-3/5 lg:w-1/3 p-6 my-16 shadow-2xl"
+      >
         <h2 className="text-3xl mb-6 font-bold">Sign in</h2>
         <FormInput
           register={{

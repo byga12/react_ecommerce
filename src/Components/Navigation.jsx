@@ -46,6 +46,7 @@ export default function Navigation() {
                 className="border border-black rounded-2xl py-0.5 px-3 hover:opacity-60 whitespace-pre"
                 onClick={() => {
                   context.logoutUser();
+                  localStorage.removeItem("cartItems");
                   signOut();
                 }}
               >

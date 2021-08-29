@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 export const Cart = () => {
-  const [cart, setcart] = useState(
+  const [cart, setCart] = useState(
     JSON.parse(localStorage.getItem("cartItems"))
   );
 
@@ -10,7 +10,7 @@ export const Cart = () => {
       if (index === i) return false;
       return true;
     });
-    setcart(newCart);
+    setCart(newCart);
     localStorage.setItem("cartItems", JSON.stringify(newCart));
   };
 
@@ -20,8 +20,10 @@ export const Cart = () => {
         style={{ minHeight: "85vh" }}
         className="flex justify-center items-center py-6"
       >
-        {!cart.length && <h2 className="text-xl">Your cart is empty</h2>}
-        {cart.length > 0 && (
+        {(!cart || !cart.length) && (
+          <h2 className="text-xl">Your cart is empty</h2>
+        )}
+        {cart && (
           <div className="border h-5/6 w-2/3 lg:w-3/5">
             <h2 className="text-3xl font-bold m-6 text-center">Your Cart</h2>
             {cart.map((item, index) => (
@@ -49,6 +51,8 @@ export const Cart = () => {
               <button
                 onClick={() => {
                   alert("Purchase succesful");
+                  localStorage.removeItem("cartItems");
+                  setCart(false);
                 }}
                 className="font-bold text-lg self-center border bg-blue-400 rounded-full py-2 px-4 text-white"
               >
