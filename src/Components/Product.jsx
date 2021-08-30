@@ -5,17 +5,22 @@ import EcommerceContext from "../Context/EcommerceContext";
 
 export const Product = (props) => {
   const context = useContext(EcommerceContext);
-  let history = useHistory();
+
+  let history = useHistory(); //hook useHistory() permite redirigir a otra página del sitio sin recargarla.
   const handleAddToCart = () => {
+    //función para manejar el botón "Add to cart"
     if (!context.userLogin) {
+      //si el usuario no está logeado notificar al usuario que debe logearse
       alert("You must be logged in before adding items to the cart");
       history.push("/signin");
     } else {
+      //si el usuario está logeado, añadir producto a la cesta (almacenar en localStorage)
       if (!localStorage.getItem("cartItems")) {
+        //si no hay nada en la cesta (en localStorage) creo un nuevo dato y almaceno el producto.
         localStorage.setItem("cartItems", JSON.stringify([props]));
         alert("Added to cart");
         return;
-      }
+      } //si ya había algo en la cesta, obtengo la lista del localStorage, la convierto en array, creo un nuevo array con el producto nuevo y lo vuelvo a almacenar
       const cartItems = JSON.parse(localStorage.getItem("cartItems"));
       const newCartItems = [...cartItems, props];
       localStorage.setItem("cartItems", JSON.stringify(newCartItems));
@@ -31,6 +36,8 @@ export const Product = (props) => {
           className="rounded w-full object-cover h-2/3"
           style={{ borderBottomRightRadius: 0, borderBottomLeftRadius: 0 }}
         />
+
+        {/* si existe un descuento en el producto, añado una aviso circular con el valor del descuento */}
         {props.discount && (
           <div className="text-sm h-10 w-10 flex items-center justify-center bg-yellow-500 rounded-full text-white p-2 absolute top-2 right-2 select-none">
             -{props.discount}%
@@ -39,6 +46,7 @@ export const Product = (props) => {
       </div>
 
       <div className="p-2 text-2xl gap-3 flex flex-col">
+        {/* si existe un descuento, tacho le precio original y al lado el precio con descuento */}
         {props.discount && (
           <div className="flex gap-2">
             <span className="text-gray-500 line-through">${props.price}</span>
@@ -47,6 +55,7 @@ export const Product = (props) => {
             </span>
           </div>
         )}
+        {/* si no existe descuento, muestro el precio normal */}
         {!props.discount && <h2 className="font-semibold">${props.price}</h2>}
 
         <h2 className="text-lg">{props.name}</h2>

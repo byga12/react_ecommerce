@@ -25,7 +25,9 @@ function App() {
   // }, []);
 
   return (
+    // GlobalState se encargará de administrar estados generales
     <GlobalState>
+      {/* BrowserRouter permite navegar por el sitio sin necesidad de recargar la página, lo hace utilizando Route */}
       <BrowserRouter>
         <Navigation />
         <Route path="/" exact component={Home}></Route>

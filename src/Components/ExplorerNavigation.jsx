@@ -1,4 +1,5 @@
 import React from "react";
+//DropdownMultiple es un componente que permite crear menús desplegables con la posibilidad de seleccionar múltiples opciones en simultáneo, además, con cada cambio en el menú (check/uncheck) puede enviar las opciones activas a un componente padre.
 import { DropdownMultiple } from "./DropdownMultiple/DropdownMultiple";
 
 export const ExplorerNavigation = (props) => {

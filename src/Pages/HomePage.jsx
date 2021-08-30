@@ -4,12 +4,13 @@ import firebase from "../Config/firebase";
 import { Product } from "../Components/Product";
 
 // IMAGES
-import landing from "../Images/landing.jpg";
+import hero from "../Images/hero.jpg";
 
 export const Home = () => {
-  const [productList, setProductList] = useState([]);
+  const [onSaleProductsList, setOnSaleProductsList] = useState([]); //este estado contendrá un array con los productos que solamente tienen descuento (On sale tag)
   useEffect(() => {
     (async () => {
+      //consultar Firestore, filtrar por productos con descuento, cambiar estado
       const querySnapshot = await firebase.firestore
         .collection("products")
         .get();
@@ -19,17 +20,14 @@ export const Home = () => {
       const productsWithDiscount = products.filter(
         (product) => product.discount
       );
-      setProductList(productsWithDiscount);
+      setOnSaleProductsList(productsWithDiscount);
     })();
   }, []);
+
   return (
     <>
       <div className="flex items-center justify-start relative overflow-hidden">
-        <img
-          className="filter brightness-40 opacity-20 "
-          src={landing}
-          alt=""
-        />
+        <img className="filter brightness-40 opacity-20 " src={hero} alt="" />
 
         <div className="p-6 text-xl sm:p-20 sm:text-4xl md:text-6xl lg:text-7xl font-bold w-full absolute">
           <ul>
@@ -46,7 +44,7 @@ export const Home = () => {
         <h2 className="text-xl text-center mb-16">ON SALE</h2>
 
         <div className="flex flex-wrap justify-center gap-3">
-          {productList.map((product, index) => (
+          {onSaleProductsList.map((product) => (
             <Product
               key={product.id}
               name={product.name}

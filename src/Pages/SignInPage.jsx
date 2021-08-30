@@ -1,20 +1,23 @@
 import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
-import EcommerceContext from "../Context/EcommerceContext";
 import { useForm } from "react-hook-form";
-import { FormInput } from "../Components/FormInput";
+import EcommerceContext from "../Context/EcommerceContext";
 import firebase from "../Config/firebase";
+
+// COMPONENTS
+import { FormInput } from "../Components/FormInput";
+
 export default function Signin() {
   const {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm();
+  } = useForm(); //hook de react-hook-form
   const context = useContext(EcommerceContext);
 
-  let history = useHistory();
+  let history = useHistory(); //hook useHistory() permite redirigir a otra página del sitio sin recargarla.
   const onSubmit = async (data) => {
-    //Firebase login
+    //Firebase login, recibe datos y los valida, si son correctos se logea, caso contario tira una alerta de error.
     try {
       await firebase.auth.signInWithEmailAndPassword(data.email, data.password);
       context.loginUser();

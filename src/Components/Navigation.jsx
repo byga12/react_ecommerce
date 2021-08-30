@@ -1,12 +1,16 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import EcommerceContext from "../Context/EcommerceContext";
+
+// COMPONENTS
 import { UserDropdown } from "./UserDropdown";
+
 export default function Navigation() {
-  let history = useHistory();
+  let history = useHistory(); //hook useHistory() permite redirigir a otra página del sitio sin recargarla.
   const signOut = () => {
-    history.push("/");
+    history.push("/"); //al cerrar sesión mediante el botón "Sign out", redirijo al index del sitio.
   };
+
   return (
     <EcommerceContext.Consumer>
       {(context) => (
@@ -23,6 +27,7 @@ export default function Navigation() {
             <Link to="/explore">Explore</Link>
           </div>
 
+          {/* Si el usuario no está logeado, muestro los botones para logearse y registrarse */}
           {!context.userLogin && (
             <div className="flex gap-3 items-center">
               <Link
@@ -40,6 +45,7 @@ export default function Navigation() {
             </div>
           )}
 
+          {/* Si el usuario está logeado, muestro el botón de cerrar sesión y el icono para acceder al menú de usuario */}
           {context.userLogin && (
             <div className="flex items-center gap-6">
               <button

@@ -48,7 +48,7 @@ const filtroRandom = () => {
 
   switch (numero) {
     case 1:
-      filtro = "On sale";
+      filtro = "New";
       break;
     case 2:
       filtro = "Limited edition";
@@ -74,7 +74,7 @@ const filtroRandom = () => {
 
 const generarTagsArray = () => {
   const numero = Math.ceil(Math.random() * 6);
-  let tagsArray;
+  let tagsArray = [];
   if (numero <= 3) {
     tagsArray = [];
   } else if (numero > 3 && numero < 5) {
@@ -100,10 +100,13 @@ class Producto {
   constructor(keyId) {
     this.imageURL = "https://source.unsplash.com/1600x900/?tshirt";
     this.price = precioRandom(10000);
-    this.discount = descuentoRandom(14);
+    this.discount = descuentoRandom(8);
     this.name = nombreRandom();
     this.tags = generarTagsArray();
     this.id = idFromPosition(keyId, 8);
+    if (this.discount) {
+      this.tags.push("On sale");
+    }
   }
 }
 

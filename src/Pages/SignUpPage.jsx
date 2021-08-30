@@ -9,16 +9,21 @@ export default function Signup() {
   const {
     register,
     handleSubmit,
-    // watch,
+    watch,
     formState: { errors },
-  } = useForm();
+  } = useForm(); //hook de react-hook-form
 
-  let history = useHistory();
+  let history = useHistory(); //hook useHistory() permite redirigir a otra página del sitio sin recargarla.
   const onSubmit = async (data) => {
-    // Firebase auth
+    // Firebase auth, recibe datos y los valida, si todo es correcto, crea la cuenta en Firebase auth, caso contrario, tira una alerta de error.
     try {
-      await firebase.auth.createUserWithEmailAndPassword(data.email, data.password);
-      // await firebase.firestore.collection("usuarios").add({ name: data.name, id: document.user.uid });
+      await firebase.auth.createUserWithEmailAndPassword(
+        data.email,
+        data.password
+      );
+      await firebase.firestore
+        .collection("usuarios")
+        .add({ name: data.name, id: document.user.uid });
       alert("Successfully registered");
       history.push("/signin");
     } catch (e) {
@@ -28,13 +33,20 @@ export default function Signup() {
 
   return (
     <div className="flex items-center justify-center">
-      <form onSubmit={handleSubmit(onSubmit)} action="" className="rounded border w-4/5 sm:w-3/5 lg:w-1/3 p-6 my-16 shadow-2xl">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        action=""
+        className="rounded border w-4/5 sm:w-3/5 lg:w-1/3 p-6 my-16 shadow-2xl"
+      >
         <h2 className="text-3xl mb-6 font-bold">Sign up</h2>
         <FormInput
           register={{
             ...register("name", {
-              // required: "this field is required",
-              // minLength: { value: 3, message: "name must be at least 3 characters" },
+              required: "this field is required",
+              minLength: {
+                value: 3,
+                message: "name must be at least 3 characters",
+              },
             }),
           }}
           label="Name"
@@ -45,7 +57,7 @@ export default function Signup() {
         <FormInput
           register={{
             ...register("email", {
-              // required: "this field is required",
+              required: "this field is required",
             }),
           }}
           label="Email"
@@ -56,8 +68,11 @@ export default function Signup() {
         <FormInput
           register={{
             ...register("password", {
-              // required: "this field is required",
-              // minLength: { value: 6, message: "password must be at least 6 characters" },
+              required: "this field is required",
+              minLength: {
+                value: 6,
+                message: "password must be at least 6 characters",
+              },
             }),
           }}
           label="Password"
@@ -68,9 +83,13 @@ export default function Signup() {
         <FormInput
           register={{
             ...register("passwordConfirm", {
-              // required: "this field is required",
-              // minLength: { value: 6, message: "password must be at least 6 characters" },
-              // validate: (value) => value === watch("password") || "passwords don't match.",
+              required: "this field is required",
+              minLength: {
+                value: 6,
+                message: "password must be at least 6 characters",
+              },
+              validate: (value) =>
+                value === watch("password") || "passwords don't match.",
             }),
           }}
           label="Confirm password"
