@@ -1,14 +1,15 @@
 import React from "react";
 //DropdownMultiple es un componente que permite crear menús desplegables con la posibilidad de seleccionar múltiples opciones en simultáneo, además, con cada cambio en el menú (check/uncheck) puede enviar las opciones activas a un componente padre.
 import { DropdownMultiple } from "./DropdownMultiple/DropdownMultiple";
+import { DropdownSingle } from "./DropdownSingle/DropdownSingle";
 
 export const ExplorerNavigation = (props) => {
   return (
     <div className="flex justify-around items-center relative">
-      <DropdownMultiple
+      <DropdownSingle
         title="Sort by"
-        options={["Highest price", "Lowest price", "Trending", "Size", "A-Z"]}
-        getActiveOptions={props.getActiveOptions}
+        options={["Highest price", "Lowest price", "A-Z"]}
+        sortProductsBy={props.sortProductsBy}
       />
       <DropdownMultiple
         title="Filters"

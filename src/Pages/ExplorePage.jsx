@@ -40,6 +40,49 @@ export const Explore = () => {
     setProductList(newProductList);
   };
 
+  const sortProductsBy = (parameter) => {
+    let sortedProductList;
+    switch (parameter) {
+      case "Lowest price":
+        // el spread se utiliza para crear una copia del array, ya que si reordenamos el mismo array React no detectará cambios en el vDOM. (esto debido a que la referencia al array es la misma).
+        sortedProductList = [
+          ...productList.sort(function (a, b) {
+            return (
+              a.price -
+              a.price * (a.discount / 100) -
+              (b.price - b.price * (b.discount / 100))
+            );
+          }),
+        ];
+        setProductList(sortedProductList);
+        break;
+      case "Highest price":
+        sortedProductList = [
+          ...productList.sort((a, b) => {
+            return (
+              b.price -
+              b.price * (b.discount / 100) -
+              (a.price - a.price * (a.discount / 100))
+            );
+          }),
+        ];
+        setProductList(sortedProductList);
+        break;
+      case "A-Z":
+        sortedProductList = [
+          ...productList.sort((a, b) => {
+            if (a.name < b.name) return -1;
+            if (b.name < a.name) return 1;
+            return 0;
+          }),
+        ];
+        setProductList(sortedProductList);
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
     <>
       <div className="p-7 py-20 bg-black text-white sm:p-20">
@@ -49,8 +92,11 @@ export const Explore = () => {
         </h3>
       </div>
 
-      {/* Pasa la función para obtener los filtros activos */}
-      <ExplorerNavigation getActiveOptions={getActiveOptions} />
+      {/* Pasa la función para obtener los filtros activos y la función para ordenar productos según un parámetro */}
+      <ExplorerNavigation
+        getActiveOptions={getActiveOptions}
+        sortProductsBy={sortProductsBy}
+      />
 
       <div className="p-7 pt-16 lg:p-10 lg:pt-16 m-auto w-4/5">
         <div className="flex flex-wrap gap-8 justify-center">

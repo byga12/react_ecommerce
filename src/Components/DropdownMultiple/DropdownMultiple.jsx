@@ -1,4 +1,4 @@
-import "./DropdownMultiple.sass";
+import s from "./DropdownMultiple.module.sass";
 
 export const DropdownMultiple = (props) => {
   const { title, options } = props;
@@ -17,24 +17,24 @@ export const DropdownMultiple = (props) => {
   };
   return (
     <div
-      className="container"
+      className={s.container}
       onMouseLeave={() =>
-        document.getElementById(id).classList.remove("dropdownShow")
+        document.getElementById(id).classList.remove(s.dropdownShow)
       }
     >
       <h2
         onMouseOver={() =>
-          document.getElementById(id).classList.add("dropdownShow")
+          document.getElementById(id).classList.add(s.dropdownShow)
         }
-        className="title"
+        className={s.title}
       >
         {title}
       </h2>
-      <ul className="dropdown" id={id} onChange={handleChange} multiple>
+      <ul className={s.dropdown} id={id} onChange={handleChange}>
         {options.map((option, index) => (
           <li key={index}>
-            <label className="option" htmlFor={option}>
-              <input className="checkbox" id={option} type="checkbox" />
+            <label className={s.option} htmlFor={option}>
+              <input className={s.checkbox} id={option} type="checkbox" />
               {option}
             </label>
           </li>
