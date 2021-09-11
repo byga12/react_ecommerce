@@ -17,7 +17,6 @@ export default function Signup() {
   const onSubmit = async (data) => {
     // Firebase auth, recibe datos y los valida, si todo es correcto, crea la cuenta en Firebase auth, caso contrario, tira una alerta de error.
     try {
-      console.log(firebase.auth);
       await firebase.auth
         .createUserWithEmailAndPassword(data.email, data.password)
         .then(async (userCredential) => {

@@ -43,12 +43,15 @@ export const Profile = () => {
       {(context) => (
         <div style={{ minHeight: "85vh" }} className="flex">
           {context.userLogin && (
-            <form className="p-6" onSubmit={handleSubmit}>
-              <h2 className="text-4xl mb-14">Your profile</h2>
-              <label className="text-2xl block mb-4">Name</label>
+            <form
+              className="p-6 m-auto border border-black rounded-lg shadow-lg flex flex-col"
+              onSubmit={handleSubmit}
+            >
+              <h2 className="text-4xl mb-8">Your profile</h2>
+              <label className="text-xl block p-2">Name</label>
               <input
                 id="nameInput"
-                className="text-2xl mb-6"
+                className="text-2xl mb-6 block border border-black p-2"
                 type="text"
                 defaultValue={userName.name}
               />
