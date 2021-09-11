@@ -4,7 +4,7 @@ import firebase from "../Config/firebase";
 import { Product } from "../Components/Product";
 
 // IMAGES
-import hero from "../Images/hero.jpg";
+import hero from "../Images/hero.png";
 
 export const Home = () => {
   const [onSaleProductsList, setOnSaleProductsList] = useState([]); //este estado contendrá un array con los productos que solamente tienen descuento (On sale tag)
@@ -27,13 +27,23 @@ export const Home = () => {
   return (
     <>
       <div className="flex items-center justify-start relative overflow-hidden">
-        <img
+        {/* <img
           className="filter brightness-40 opacity-20 "
           src={hero}
           alt="black and white clothes on a coat rack"
-        />
+        /> */}
 
-        <div className="p-6 text-xl sm:p-20 sm:text-4xl md:text-6xl lg:text-7xl font-bold w-full absolute">
+        <div
+          className="p-3 text-5xl sm:text-6xl md:textl-7xl font-bold w-full flex items-center md:justify-center"
+          style={{
+            width: "100%",
+            minHeight: "90vh",
+            backgroundImage: `url(${hero})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center center",
+            backgroundRepeat: "no-repeat",
+          }}
+        >
           <ul>
             <li>buy, sell and gift at reasonable prices.</li>
 
@@ -44,8 +54,8 @@ export const Home = () => {
         </div>
       </div>
 
-      <div className="w-4/5 p-10 py-20 mx-auto">
-        <h2 className="text-xl text-center mb-16">ON SALE</h2>
+      <div className="w-4/5 p-10 py-16 mx-auto">
+        <h2 className="text-xl text-center mb-12">ON SALE</h2>
 
         <div className="flex flex-wrap justify-center gap-3">
           {onSaleProductsList.map((product) => (
