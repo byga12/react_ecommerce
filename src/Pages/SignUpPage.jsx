@@ -17,13 +17,15 @@ export default function Signup() {
   const onSubmit = async (data) => {
     // Firebase auth, recibe datos y los valida, si todo es correcto, crea la cuenta en Firebase auth, caso contrario, tira una alerta de error.
     try {
-      await firebase.auth.createUserWithEmailAndPassword(
-        data.email,
-        data.password
-      );
-      await firebase.firestore
-        .collection("usuarios")
-        .add({ name: data.name, id: document.user.uid });
+      console.log(firebase.auth);
+      await firebase.auth
+        .createUserWithEmailAndPassword(data.email, data.password)
+        .then(async (userCredential) => {
+          await firebase.firestore
+            .collection("usuarios")
+            .add({ name: data.name, id: userCredential.user.uid });
+        });
+
       alert("Successfully registered");
       history.push("/signin");
     } catch (e) {
