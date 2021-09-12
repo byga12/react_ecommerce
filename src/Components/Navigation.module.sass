@@ -1,0 +1,66 @@
+.navLinks
+  display: flex
+  width: 100%
+  justify-content: space-between
+  transition: transform 0.3s ease-out
+  
+
+.burger
+  display: none
+  
+
+
+@media screen and (max-width: 500px)
+  body
+    overflow-x: hidden
+  .navLinks
+    border-left: 1px solid black
+    border-bottom: 1px solid black
+    padding: 1rem
+    background: #FFFFFF
+    z-index: 100
+    display: flex
+    flex-direction: column
+    justify-content: start
+    align-items: start
+    position: absolute
+    width: 30%
+    top: 10vh
+    right: 0
+    gap: 1rem
+    transform: translateX(110%)
+
+  .active
+    transform: translateX(0%)
+
+  .loginButtons
+    flex-direction: column
+    align-items: start
+    gap: 1rem
+  .loginButtons *
+    margin: 0
+    padding: 0
+    border: none
+  
+  .burger
+    cursor: pointer
+    display: flex
+    align-items: center
+    justify-content: center
+    flex-direction: column
+    gap: 5px
+    height: 20px
+    width: 20px
+  
+  .burger div
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out
+    background: black
+    width: 75%
+    height: 1px
+
+.toggle .line1
+  transform: rotate(-45deg) translate(-3px,6px)
+.toggle .line2
+  opacity: 0
+.toggle .line3
+  transform: rotate(45deg) translate(-3px,-6px)

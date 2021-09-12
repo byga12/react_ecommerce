@@ -8,7 +8,7 @@ export const UserDropdown = () => {
   };
 
   return (
-    <div className="flex flex-col" style={{ direction: "rtl" }}>
+    <div className="flex flex-col px-3" style={{ direction: "rtl" }}>
       <button onClick={toggleMenu} className="whitespace-pre">
         <i className="fas fa-caret-down ml-1"></i>
         <i className="fas fa-user"></i>
